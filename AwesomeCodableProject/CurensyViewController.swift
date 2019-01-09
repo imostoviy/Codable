@@ -19,16 +19,21 @@ class CurensyViewController: UIViewController {
         tableView.register(cell, forCellReuseIdentifier: CellsTableViewCell.reuseIdentifyer)
         Getdata.shared.getData(completion: { (results) in
             self.ccys = results
+            defer {DispatchQueue.main.async {
+                self.tableView.reloadData()
+                }}
         })
-        tableView.reloadData()
+        
     }
 
     
     @IBAction func refreshButton(_ sender: UIButton) {
         Getdata.shared.getData(completion: { (results) in
             self.ccys = results
+            defer { DispatchQueue.main.async {
+                self.tableView.reloadData()
+                }}
         })
-        tableView.reloadData()
     }
 }
 
