@@ -12,6 +12,11 @@
 		8427D33021E633F1002F6960 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8427D32E21E633F1002F6960 /* Main.storyboard */; };
 		8427D33221E633F3002F6960 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8427D33121E633F3002F6960 /* Assets.xcassets */; };
 		8427D33521E633F3002F6960 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8427D33321E633F3002F6960 /* LaunchScreen.storyboard */; };
+		8427D33F21E63F37002F6960 /* CurensyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427D33E21E63F37002F6960 /* CurensyViewController.swift */; };
+		8427D34121E649BE002F6960 /* Ccy.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427D34021E649BE002F6960 /* Ccy.swift */; };
+		8427D34421E652DA002F6960 /* CellsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427D34221E652DA002F6960 /* CellsTableViewCell.swift */; };
+		8427D34521E652DA002F6960 /* CellsTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8427D34321E652DA002F6960 /* CellsTableViewCell.xib */; };
+		8427D34721E67311002F6960 /* API.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8427D34621E67311002F6960 /* API.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +27,11 @@
 		8427D33121E633F3002F6960 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		8427D33421E633F3002F6960 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		8427D33621E633F3002F6960 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		8427D33E21E63F37002F6960 /* CurensyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurensyViewController.swift; sourceTree = "<group>"; };
+		8427D34021E649BE002F6960 /* Ccy.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Ccy.swift; sourceTree = "<group>"; };
+		8427D34221E652DA002F6960 /* CellsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellsTableViewCell.swift; sourceTree = "<group>"; };
+		8427D34321E652DA002F6960 /* CellsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellsTableViewCell.xib; sourceTree = "<group>"; };
+		8427D34621E67311002F6960 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,6 +66,11 @@
 			children = (
 				8427D32A21E633F1002F6960 /* AppDelegate.swift */,
 				8427D32C21E633F1002F6960 /* ViewController.swift */,
+				8427D34221E652DA002F6960 /* CellsTableViewCell.swift */,
+				8427D34321E652DA002F6960 /* CellsTableViewCell.xib */,
+				8427D33E21E63F37002F6960 /* CurensyViewController.swift */,
+				8427D34021E649BE002F6960 /* Ccy.swift */,
+				8427D34621E67311002F6960 /* API.swift */,
 				8427D32E21E633F1002F6960 /* Main.storyboard */,
 				8427D33121E633F3002F6960 /* Assets.xcassets */,
 				8427D33321E633F3002F6960 /* LaunchScreen.storyboard */,
@@ -123,6 +138,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8427D33521E633F3002F6960 /* LaunchScreen.storyboard in Resources */,
+				8427D34521E652DA002F6960 /* CellsTableViewCell.xib in Resources */,
 				8427D33221E633F3002F6960 /* Assets.xcassets in Resources */,
 				8427D33021E633F1002F6960 /* Main.storyboard in Resources */,
 			);
@@ -136,7 +152,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				8427D32D21E633F1002F6960 /* ViewController.swift in Sources */,
+				8427D34721E67311002F6960 /* API.swift in Sources */,
 				8427D32B21E633F1002F6960 /* AppDelegate.swift in Sources */,
+				8427D33F21E63F37002F6960 /* CurensyViewController.swift in Sources */,
+				8427D34421E652DA002F6960 /* CellsTableViewCell.swift in Sources */,
+				8427D34121E649BE002F6960 /* Ccy.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

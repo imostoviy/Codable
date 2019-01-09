@@ -1,24 +1,147 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13122.16" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eaH-sj-9Op">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13104.12"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
-        <scene sceneID="tne-QT-ifu">
+        <!--Navigation Controller-->
+        <scene sceneID="M5T-GD-q93">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                <navigationController id="eaH-sj-9Op" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F2H-mb-KAI">
+                        <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Se5-kI-Kqn" kind="relationship" relationship="rootViewController" id="dmy-Ge-I2E"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3yj-oy-MqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-397" y="14"/>
+        </scene>
+        <!--Menu View Controller-->
+        <scene sceneID="msB-Y7-git">
+            <objects>
+                <viewController id="Se5-kI-Kqn" customClass="MenuViewController" customModule="AwesomeCodableProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="n1o-Ur-5xr">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Please choose option" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Gb8-df-w5l">
+                                <rect key="frame" x="105.5" y="164" width="164" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" red="0.0" green="0.68567576142131981" blue="0.067000224041310993" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4bm-VM-ukO">
+                                <rect key="frame" x="156" y="215" width="63" height="30"/>
+                                <state key="normal" title="Currency"/>
+                                <connections>
+                                    <action selector="currencyTapped:" destination="Se5-kI-Kqn" eventType="touchUpInside" id="rWD-sH-J7W"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ONu-9d-pZ9">
+                                <rect key="frame" x="156" y="275" width="63" height="30"/>
+                                <state key="normal" title="ATM's"/>
+                                <connections>
+                                    <segue destination="9bv-Ua-SzL" kind="show" id="Leo-Mc-2vP"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" red="0.82677374871818743" green="0.95009564979424466" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="Gb8-df-w5l" firstAttribute="top" secondItem="CWf-lt-btD" secondAttribute="top" constant="100" id="5ib-Vv-ZDi"/>
+                            <constraint firstItem="ONu-9d-pZ9" firstAttribute="top" secondItem="4bm-VM-ukO" secondAttribute="bottom" constant="30" id="B8I-I3-IoO"/>
+                            <constraint firstItem="ONu-9d-pZ9" firstAttribute="width" secondItem="4bm-VM-ukO" secondAttribute="width" id="E6b-bQ-EQT"/>
+                            <constraint firstItem="4bm-VM-ukO" firstAttribute="centerX" secondItem="CWf-lt-btD" secondAttribute="centerX" id="dOg-wv-XP9"/>
+                            <constraint firstItem="Gb8-df-w5l" firstAttribute="centerX" secondItem="CWf-lt-btD" secondAttribute="centerX" id="g0t-SB-oqn"/>
+                            <constraint firstItem="ONu-9d-pZ9" firstAttribute="centerX" secondItem="CWf-lt-btD" secondAttribute="centerX" id="hBa-Y8-7gf"/>
+                            <constraint firstItem="4bm-VM-ukO" firstAttribute="top" secondItem="Gb8-df-w5l" secondAttribute="bottom" constant="30" id="jkj-Gy-bH1"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="CWf-lt-btD"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Ia1-WX-dmf"/>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dGF-CK-q0n" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="384" y="16"/>
+        </scene>
+        <!--Currency-->
+        <scene sceneID="Cx1-I2-Ok1">
+            <objects>
+                <viewController storyboardIdentifier="Currency Screen" useStoryboardIdentifierAsRestorationIdentifier="YES" id="vIr-8J-1uj" userLabel="Currency" customClass="CurensyViewController" customModule="AwesomeCodableProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="hQ1-na-2UM">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Yce-XS-jeF">
+                                <rect key="frame" x="0.0" y="64" width="375" height="603"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="vIr-8J-1uj" id="zmO-Hn-4lh"/>
+                                    <outlet property="delegate" destination="vIr-8J-1uj" id="UYe-E0-ozV"/>
+                                </connections>
+                            </tableView>
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xNR-B5-s32">
+                                <rect key="frame" x="0.0" y="20" width="375" height="44"/>
+                                <items>
+                                    <navigationItem title="Currency" id="wwu-em-jwM">
+                                        <barButtonItem key="rightBarButtonItem" style="plain" id="ZWC-8u-bnc">
+                                            <button key="customView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" id="Jbh-LS-p0G">
+                                                <rect key="frame" x="276" y="7" width="83" height="30"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                                                <state key="normal" title="Refresh"/>
+                                                <connections>
+                                                    <action selector="refreshButton:" destination="vIr-8J-1uj" eventType="touchUpInside" id="Ars-Mz-wJj"/>
+                                                </connections>
+                                            </button>
+                                        </barButtonItem>
+                                    </navigationItem>
+                                </items>
+                            </navigationBar>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yce-XS-jeF" firstAttribute="leading" secondItem="lu9-WA-SIN" secondAttribute="leading" id="Bjy-54-9ag"/>
+                            <constraint firstItem="lu9-WA-SIN" firstAttribute="bottom" secondItem="Yce-XS-jeF" secondAttribute="bottom" id="CSV-HB-mAC"/>
+                            <constraint firstItem="xNR-B5-s32" firstAttribute="leading" secondItem="lu9-WA-SIN" secondAttribute="leading" id="IEe-Ni-gBm"/>
+                            <constraint firstItem="xNR-B5-s32" firstAttribute="top" secondItem="lu9-WA-SIN" secondAttribute="top" id="YOf-0B-vta"/>
+                            <constraint firstItem="lu9-WA-SIN" firstAttribute="trailing" secondItem="Yce-XS-jeF" secondAttribute="trailing" id="j3Y-iW-ESe"/>
+                            <constraint firstItem="Yce-XS-jeF" firstAttribute="top" secondItem="xNR-B5-s32" secondAttribute="bottom" id="s0q-gb-J3A"/>
+                            <constraint firstItem="xNR-B5-s32" firstAttribute="trailing" secondItem="lu9-WA-SIN" secondAttribute="trailing" id="z5a-Du-k9e"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="lu9-WA-SIN"/>
+                    </view>
+                    <connections>
+                        <outlet property="tableView" destination="Yce-XS-jeF" id="RsQ-hx-qTr"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="3uT-9S-a3d" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1296.8" y="-467.3163418290855"/>
+        </scene>
+        <!--ATM's-->
+        <scene sceneID="6Ne-DP-rjb">
+            <objects>
+                <viewController id="9bv-Ua-SzL" userLabel="ATM's" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="Ktv-6I-drh">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="8E1-pO-8qu"/>
                     </view>
                 </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="LvC-5z-3Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="1297" y="227"/>
         </scene>
     </scenes>
 </document>

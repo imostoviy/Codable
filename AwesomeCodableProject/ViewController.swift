@@ -8,13 +8,13 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class MenuViewController: UIViewController {
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+    @IBAction func currencyTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let currencyController = storyboard.instantiateViewController(withIdentifier: "Currency Screen") as! CurensyViewController
+        currencyController.title = "Currency base: UAH"
+        navigationController?.pushViewController(currencyController, animated: true)
     }
-
-
 }
 
