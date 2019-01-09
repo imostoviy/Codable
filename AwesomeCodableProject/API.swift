@@ -12,13 +12,14 @@ class Getdata {
     
     static let shared = Getdata()
     
-    func getData(completion: (([Ccy]) -> ())) {
+    func getData(completion: @escaping (([Ccy]) -> ())) {
         guard let url = URL(string: "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11") else { return }
         let session = URLSession(configuration: .default)
         let task = session.dataTask(with: url) {(data, _, _) in
             guard let data = data else { return }
             do {
                 let ccy = try JSONDecoder().decode([Ccy].self, from: data)
+                completion(ccy)
             } catch {}
         }
         task.resume()
