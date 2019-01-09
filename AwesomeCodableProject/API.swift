@@ -10,26 +10,22 @@ import Foundation
 
 class Getdata {
     
-    init() {
-        getData()
-    }
-    
     static let shared = Getdata()
-    private let defaultSession = URLSession(configuration: .default)
-    private var dataTask: URLSessionDataTask?
-    var data: [Ccy] = []
     
-    func getData() {
-        guard let url = URL(string: "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11") else { return }
+    func getData(completion: @escaping (([Ccy]) -> ())) -> [Ccy] {
+        var results: [Ccy] = []
+        guard let url = URL(string: "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11") else { return [] }
         let session = URLSession(configuration: .default)
+        
         let task = session.dataTask(with: url) {(data, _, _) in
+            defer { DispatchQueue.main.async { completion(results) } }
             guard let data = data else { return }
             do {
                 let ccy = try JSONDecoder().decode([Ccy].self, from: data)
-                self.data = ccy
-                return
+                results = ccy
             } catch {}
         }
         task.resume()
+        return results
     }
 }

@@ -17,12 +17,17 @@ class CurensyViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.register(cell, forCellReuseIdentifier: CellsTableViewCell.reuseIdentifyer)
-        ccys = Getdata.shared.data
+        ccys = Getdata.shared.getData(completion: { (ccys) in
+            self.tableView.reloadData()
+        })
+        tableView.reloadData()
     }
 
     
     @IBAction func refreshButton(_ sender: UIButton) {
-        ccys = Getdata.shared.data
+        ccys = Getdata.shared.getData(completion: { (ccys) in
+            self.tableView.reloadData()
+        })
         tableView.reloadData()
     }
 }
