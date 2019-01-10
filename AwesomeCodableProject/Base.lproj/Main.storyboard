@@ -131,13 +131,64 @@
         <!--ATM's-->
         <scene sceneID="6Ne-DP-rjb">
             <objects>
-                <viewController id="9bv-Ua-SzL" userLabel="ATM's" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ATMsScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9bv-Ua-SzL" userLabel="ATM's" customClass="ATMsScreenViewController" customModule="AwesomeCodableProject" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ktv-6I-drh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select the City" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6tN-f6-iTP">
+                                <rect key="frame" x="131.5" y="84" width="112" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="qIJ-sP-QwQ">
+                                <rect key="frame" x="20" y="120" width="335" height="30"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Qyw-xX-pns">
+                                <rect key="frame" x="131.5" y="170" width="112" height="30"/>
+                                <color key="backgroundColor" red="0.0" green="0.92270780454720813" blue="0.028103320311489322" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <state key="normal" title="Search">
+                                    <color key="titleColor" red="0.091955924249201626" green="0.53582658299599895" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="SearchButton:" destination="9bv-Ua-SzL" eventType="touchUpInside" id="pZ7-ar-NRg"/>
+                                </connections>
+                            </button>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ndw-0b-HIg">
+                                <rect key="frame" x="0.0" y="210" width="375" height="457"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="9bv-Ua-SzL" id="IbC-Sw-3zN"/>
+                                    <outlet property="delegate" destination="9bv-Ua-SzL" id="RbT-jK-5M8"/>
+                                </connections>
+                            </tableView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Ndw-0b-HIg" firstAttribute="leading" secondItem="8E1-pO-8qu" secondAttribute="leading" id="5Is-xi-PtV"/>
+                            <constraint firstItem="8E1-pO-8qu" firstAttribute="trailing" secondItem="qIJ-sP-QwQ" secondAttribute="trailing" constant="20" id="JTy-UJ-zfj"/>
+                            <constraint firstItem="qIJ-sP-QwQ" firstAttribute="top" secondItem="6tN-f6-iTP" secondAttribute="bottom" constant="15" id="Mos-2g-Ip0"/>
+                            <constraint firstItem="6tN-f6-iTP" firstAttribute="centerX" secondItem="8E1-pO-8qu" secondAttribute="centerX" id="OTf-8X-qm5"/>
+                            <constraint firstItem="qIJ-sP-QwQ" firstAttribute="centerX" secondItem="6tN-f6-iTP" secondAttribute="centerX" id="aaQ-dX-P0M"/>
+                            <constraint firstItem="qIJ-sP-QwQ" firstAttribute="leading" secondItem="8E1-pO-8qu" secondAttribute="leading" constant="20" id="dVj-tj-a1z"/>
+                            <constraint firstItem="Qyw-xX-pns" firstAttribute="centerX" secondItem="qIJ-sP-QwQ" secondAttribute="centerX" id="fNm-Xw-6R5"/>
+                            <constraint firstItem="8E1-pO-8qu" firstAttribute="trailing" secondItem="Ndw-0b-HIg" secondAttribute="trailing" id="hrr-MB-wEu"/>
+                            <constraint firstItem="Qyw-xX-pns" firstAttribute="width" secondItem="6tN-f6-iTP" secondAttribute="width" id="jUK-7t-Q3e"/>
+                            <constraint firstItem="Qyw-xX-pns" firstAttribute="top" secondItem="qIJ-sP-QwQ" secondAttribute="bottom" constant="20" id="jdm-L5-wBV"/>
+                            <constraint firstItem="8E1-pO-8qu" firstAttribute="bottom" secondItem="Ndw-0b-HIg" secondAttribute="bottom" id="jz3-qf-emc"/>
+                            <constraint firstItem="Ndw-0b-HIg" firstAttribute="top" secondItem="Qyw-xX-pns" secondAttribute="bottom" constant="10" id="mnN-O8-mkG"/>
+                            <constraint firstItem="6tN-f6-iTP" firstAttribute="top" secondItem="8E1-pO-8qu" secondAttribute="top" constant="20" id="xiL-6L-9j1"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="8E1-pO-8qu"/>
                     </view>
+                    <connections>
+                        <outlet property="SelectCityTextField" destination="qIJ-sP-QwQ" id="HTo-4g-EPd"/>
+                        <outlet property="tableView" destination="Ndw-0b-HIg" id="ceb-Uc-WQ3"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="LvC-5z-3Tl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
