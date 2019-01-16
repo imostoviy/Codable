@@ -21,6 +21,9 @@
 		845D356421E7456A0016E264 /* ATMsScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D356321E7456A0016E264 /* ATMsScreenViewController.swift */; };
 		845D356721E7528D0016E264 /* ATMTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 845D356521E7528D0016E264 /* ATMTableViewCell.swift */; };
 		845D356821E7528D0016E264 /* ATMTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 845D356621E7528D0016E264 /* ATMTableViewCell.xib */; };
+		84AD36D021EF5610008F5B74 /* PostViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD36CF21EF5610008F5B74 /* PostViewController.swift */; };
+		84AD36D221EF5880008F5B74 /* DataFromPost.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD36D121EF5880008F5B74 /* DataFromPost.swift */; };
+		84AD36D421EFAE59008F5B74 /* DataFromID.swift in Sources */ = {isa = PBXBuildFile; fileRef = 84AD36D321EFAE59008F5B74 /* DataFromID.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -37,9 +40,12 @@
 		8427D34321E652DA002F6960 /* CellsTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = CellsTableViewCell.xib; sourceTree = "<group>"; };
 		8427D34621E67311002F6960 /* API.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = API.swift; sourceTree = "<group>"; };
 		845D356121E73E8D0016E264 /* ATMs.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMs.swift; sourceTree = "<group>"; };
-		845D356321E7456A0016E264 /* ATMsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMsScreenViewController.swift; sourceTree = "<group>"; };
+		845D356321E7456A0016E264 /* ATMsScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMsScreenViewController.swift; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		845D356521E7528D0016E264 /* ATMTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ATMTableViewCell.swift; sourceTree = "<group>"; };
 		845D356621E7528D0016E264 /* ATMTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = ATMTableViewCell.xib; sourceTree = "<group>"; };
+		84AD36CF21EF5610008F5B74 /* PostViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostViewController.swift; sourceTree = "<group>"; };
+		84AD36D121EF5880008F5B74 /* DataFromPost.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromPost.swift; sourceTree = "<group>"; };
+		84AD36D321EFAE59008F5B74 /* DataFromID.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataFromID.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,22 +79,57 @@
 			isa = PBXGroup;
 			children = (
 				8427D32A21E633F1002F6960 /* AppDelegate.swift */,
-				8427D32C21E633F1002F6960 /* ViewController.swift */,
-				8427D34221E652DA002F6960 /* CellsTableViewCell.swift */,
-				8427D34321E652DA002F6960 /* CellsTableViewCell.xib */,
-				8427D33E21E63F37002F6960 /* CurensyViewController.swift */,
-				8427D34021E649BE002F6960 /* Ccy.swift */,
-				845D356321E7456A0016E264 /* ATMsScreenViewController.swift */,
-				845D356521E7528D0016E264 /* ATMTableViewCell.swift */,
-				845D356621E7528D0016E264 /* ATMTableViewCell.xib */,
-				8427D34621E67311002F6960 /* API.swift */,
-				845D356121E73E8D0016E264 /* ATMs.swift */,
+				84AD36CC21EF4438008F5B74 /* ViewControllers */,
+				84AD36CB21EF43EE008F5B74 /* Cells For Tableview */,
+				84AD36CD21EF4454008F5B74 /* Network Models */,
+				84AD36CE21EF4475008F5B74 /* API */,
 				8427D32E21E633F1002F6960 /* Main.storyboard */,
 				8427D33121E633F3002F6960 /* Assets.xcassets */,
 				8427D33321E633F3002F6960 /* LaunchScreen.storyboard */,
 				8427D33621E633F3002F6960 /* Info.plist */,
 			);
 			path = AwesomeCodableProject;
+			sourceTree = "<group>";
+		};
+		84AD36CB21EF43EE008F5B74 /* Cells For Tableview */ = {
+			isa = PBXGroup;
+			children = (
+				845D356521E7528D0016E264 /* ATMTableViewCell.swift */,
+				845D356621E7528D0016E264 /* ATMTableViewCell.xib */,
+				8427D34221E652DA002F6960 /* CellsTableViewCell.swift */,
+				8427D34321E652DA002F6960 /* CellsTableViewCell.xib */,
+			);
+			path = "Cells For Tableview";
+			sourceTree = "<group>";
+		};
+		84AD36CC21EF4438008F5B74 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				845D356321E7456A0016E264 /* ATMsScreenViewController.swift */,
+				8427D32C21E633F1002F6960 /* ViewController.swift */,
+				84AD36CF21EF5610008F5B74 /* PostViewController.swift */,
+				8427D33E21E63F37002F6960 /* CurensyViewController.swift */,
+			);
+			path = ViewControllers;
+			sourceTree = "<group>";
+		};
+		84AD36CD21EF4454008F5B74 /* Network Models */ = {
+			isa = PBXGroup;
+			children = (
+				845D356121E73E8D0016E264 /* ATMs.swift */,
+				84AD36D321EFAE59008F5B74 /* DataFromID.swift */,
+				8427D34021E649BE002F6960 /* Ccy.swift */,
+				84AD36D121EF5880008F5B74 /* DataFromPost.swift */,
+			);
+			path = "Network Models";
+			sourceTree = "<group>";
+		};
+		84AD36CE21EF4475008F5B74 /* API */ = {
+			isa = PBXGroup;
+			children = (
+				8427D34621E67311002F6960 /* API.swift */,
+			);
+			path = API;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -164,10 +205,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				84AD36D221EF5880008F5B74 /* DataFromPost.swift in Sources */,
 				8427D32D21E633F1002F6960 /* ViewController.swift in Sources */,
+				84AD36D421EFAE59008F5B74 /* DataFromID.swift in Sources */,
 				8427D34721E67311002F6960 /* API.swift in Sources */,
 				8427D32B21E633F1002F6960 /* AppDelegate.swift in Sources */,
 				8427D33F21E63F37002F6960 /* CurensyViewController.swift in Sources */,
+				84AD36D021EF5610008F5B74 /* PostViewController.swift in Sources */,
 				845D356721E7528D0016E264 /* ATMTableViewCell.swift in Sources */,
 				8427D34421E652DA002F6960 /* CellsTableViewCell.swift in Sources */,
 				845D356421E7456A0016E264 /* ATMsScreenViewController.swift in Sources */,

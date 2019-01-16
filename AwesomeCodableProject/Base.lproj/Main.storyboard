@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="eaH-sj-9Op">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="8wy-6B-neT">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
@@ -10,10 +10,29 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--Navigation Controller-->
+        <!--Tab Bar Controller-->
+        <scene sceneID="hSB-47-UI9">
+            <objects>
+                <tabBarController id="8wy-6B-neT" sceneMemberID="viewController">
+                    <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="96t-b2-jQU">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="49"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </tabBar>
+                    <connections>
+                        <segue destination="eaH-sj-9Op" kind="relationship" relationship="viewControllers" id="287-uS-pEZ"/>
+                        <segue destination="h4w-Oe-lBn" kind="relationship" relationship="viewControllers" id="Dc9-28-S7h"/>
+                    </connections>
+                </tabBarController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="nyG-Ic-lRy" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-1292" y="14"/>
+        </scene>
+        <!--HT9-->
         <scene sceneID="M5T-GD-q93">
             <objects>
                 <navigationController id="eaH-sj-9Op" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="HT9" id="fLy-RU-3eX"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="F2H-mb-KAI">
                         <rect key="frame" x="0.0" y="20" width="375" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
@@ -25,6 +44,54 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3yj-oy-MqT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-397" y="14"/>
+        </scene>
+        <!--NewHT-->
+        <scene sceneID="F4J-Xi-G5m">
+            <objects>
+                <viewController storyboardIdentifier="PostViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="h4w-Oe-lBn" customClass="PostViewController" customModule="AwesomeCodableProject" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="wPg-L5-qZN">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nia-7f-7j7">
+                                <rect key="frame" x="20" y="60" width="335" height="36"/>
+                                <color key="backgroundColor" red="0.0" green="0.58980089430000004" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                <state key="normal" title="Post gif">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
+                                <connections>
+                                    <action selector="postCatButtonPressed:" destination="h4w-Oe-lBn" eventType="touchUpInside" id="6fY-aF-Rh3"/>
+                                </connections>
+                            </button>
+                            <progressView opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="750" progress="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="vYh-Zh-shb">
+                                <rect key="frame" x="20" y="146" width="335" height="10"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="10" id="1Jl-hH-boE"/>
+                                </constraints>
+                            </progressView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="vYh-Zh-shb" firstAttribute="leading" secondItem="nia-7f-7j7" secondAttribute="leading" id="66K-ex-nOg"/>
+                            <constraint firstItem="vYh-Zh-shb" firstAttribute="top" secondItem="nia-7f-7j7" secondAttribute="bottom" constant="50" id="UNI-uF-L7f"/>
+                            <constraint firstItem="nia-7f-7j7" firstAttribute="leading" secondItem="WkQ-Ir-0uf" secondAttribute="leading" constant="20" id="XHB-IC-H4c"/>
+                            <constraint firstItem="vYh-Zh-shb" firstAttribute="width" secondItem="nia-7f-7j7" secondAttribute="width" id="ajY-xv-fn1"/>
+                            <constraint firstItem="nia-7f-7j7" firstAttribute="centerX" secondItem="WkQ-Ir-0uf" secondAttribute="centerX" id="bqh-rS-T5F"/>
+                            <constraint firstItem="nia-7f-7j7" firstAttribute="top" secondItem="WkQ-Ir-0uf" secondAttribute="top" constant="40" id="fjX-Fb-h0M"/>
+                            <constraint firstItem="WkQ-Ir-0uf" firstAttribute="trailing" secondItem="nia-7f-7j7" secondAttribute="trailing" constant="20" id="qfL-jN-etX"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="WkQ-Ir-0uf"/>
+                    </view>
+                    <tabBarItem key="tabBarItem" title="NewHT" id="fga-Ke-anz"/>
+                    <connections>
+                        <outlet property="postButton" destination="nia-7f-7j7" id="0hm-E6-WgT"/>
+                        <outlet property="progressview" destination="vYh-Zh-shb" id="yey-Ks-QcY"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="igJ-bF-lUj" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-398" y="768"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="msB-Y7-git">
@@ -159,7 +226,7 @@
                                 </connections>
                             </button>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="Ndw-0b-HIg">
-                                <rect key="frame" x="0.0" y="210" width="375" height="457"/>
+                                <rect key="frame" x="0.0" y="210" width="375" height="408"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <connections>
                                     <outlet property="dataSource" destination="9bv-Ua-SzL" id="IbC-Sw-3zN"/>

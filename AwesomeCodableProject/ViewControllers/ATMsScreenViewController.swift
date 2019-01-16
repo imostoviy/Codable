@@ -58,6 +58,7 @@ class ATMsScreenViewController: UIViewController {
         Getdata.shared.getAtms(city: selectedCity) { (results) in
             self.adresses = results
             self.tableView.reloadData()
+            
         }
     }
     
