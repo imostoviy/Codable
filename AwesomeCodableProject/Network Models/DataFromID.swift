@@ -9,16 +9,6 @@
 import Foundation
 
 struct DataFromID: Decodable {
-//    let data: Images
-//
-//}
-//
-//struct Images: Decodable {
-//    let fixed_width: Fixed_width
-//}
-//struct Fixed_width: Decodable {
-//    let mp4: String
-//}
     //    let url: String
     //
     //    enum CodingKeys: String, CodingKey {
@@ -26,10 +16,22 @@ struct DataFromID: Decodable {
     //    }
 
     let data: Data
-    
+
     struct Data: Decodable {
-        let url: String
+        let images: Images
     }
+
+    struct Images: Decodable {
+        let fixed_width: Fixed
+    }
+
+    struct Fixed: Decodable {
+        let mp4: String
+    }
+//    let data: Data
+//    struct Data: Decodable {
+//        let url: String
+//    }
 }
 
 

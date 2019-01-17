@@ -19,9 +19,10 @@ class Getdata {
     private let session = URLSession(configuration: .default)
     private var task: URLSessionTask?
     private let urlString: String =  "https://api.privatbank.ua/p24api/infrastructure?json&atm&address="
-    private let getRandomGif: String = "https://www.placecage.com/gif/300/300"
+    private let getRandomGif: String = "https://www.placecage.com/gif/"
     private let urlToBePosted: String = "https://upload.giphy.com/v1/gifs?"
     private let sourceUrlForVideo: String = "https://api.giphy.com/v1/gifs/"
+    private let size: [Int] = Array(300...400)
     
     //MARK: Geting data and parsing JSON
     
@@ -66,9 +67,11 @@ class Getdata {
     //MARK: post request
     func postRequest(complection: @escaping ((DataFromPost) -> ())) {
         task?.cancel()
+        let gifSize = String(size.randomElement() ?? 300)
+        let randomGifUrl: String = getRandomGif + "\(gifSize)/\(gifSize)"
         guard var urlComponents = URLComponents(string: urlToBePosted) else { fatalError("Incorrect url") }
         urlComponents.queryItems = [.init(name: "api_key", value: "lc3aGasGwDbt4ZWhRNQGWsZIbS4dzuBu"),
-                                  .init(name: "source_image_url", value: getRandomGif)]
+                                  .init(name: "source_image_url", value: randomGifUrl)]
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = "POST"
         task = session.dataTask(with: request, completionHandler: { (data, response, error) in
@@ -100,7 +103,7 @@ class Getdata {
             do {
                 let url = try JSONDecoder().decode(DataFromID.self, from: data)
                 defer {DispatchQueue.main.async {
-                    complection(url.data.url, nil)
+                    complection(url.data.images.fixed_width.mp4, nil)
                     }}
             } catch {}
         })

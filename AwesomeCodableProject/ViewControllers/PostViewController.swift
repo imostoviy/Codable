@@ -13,8 +13,7 @@ class PostViewController: UIViewController {
 
     //MARK: private properties
     private lazy var session: URLSession = {
-        let configuration = URLSessionConfiguration.default
-        return URLSession(configuration: configuration, delegate: self, delegateQueue: nil)
+        return URLSession(configuration: URLSessionConfiguration.default, delegate: self, delegateQueue: nil)
     }()
     private var downloadingId: String = ""
     private var videoUrl: String = ""
@@ -49,14 +48,13 @@ class PostViewController: UIViewController {
                 self.present(alert, animated: true, completion: nil)
                 return
             }
-            self.videoUrl = finalUrl! + "/200w.mp4"
+            self.videoUrl = finalUrl!
             print(self.videoUrl)
             self.downloading()
         }
     }
     func downloading() {
         guard let url = URL(string: videoUrl) else { return }
-        //let request = URLRequest(url: url)
         session.downloadTask(with: url).resume()
     }
 
@@ -66,7 +64,15 @@ class PostViewController: UIViewController {
 
 extension PostViewController: URLSessionDownloadDelegate {
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
-        let player = AVPlayer(url: location)
+        let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
+        let destinationURL = documentsDirectoryURL.appendingPathComponent("gif.mp4")
+        do {
+            try FileManager.default.removeItem(at: destinationURL)
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+        } catch let error as NSError {
+            print(error.localizedDescription)
+        }
+        let player = AVPlayer(url: destinationURL)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
         self.present(playerViewController, animated: true, completion: nil)
