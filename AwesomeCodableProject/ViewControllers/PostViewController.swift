@@ -26,33 +26,24 @@ class PostViewController: UIViewController {
     //MARK: IBActions
     @IBAction func postCatButtonPressed(_ sender: UIButton) {
         progressview.progress = 0
-        Getdata.shared.postRequest { (dataFromPost) in
-            self.downloadingId = dataFromPost.data.id
-            self.getUrl(id: dataFromPost.data.id)
+        Getdata.shared.postRequest { (finalURL) in
+            DispatchQueue.main.async {
+                if finalURL != nil {
+                    self.videoUrl = finalURL!
+                    self.downloading()
+                }
+            }
         }
     }
     
-    
+    //MARL:viewDidLoad
     override func viewDidLoad() {
         super.viewDidLoad()
         postButton.layer.cornerRadius = 3
         postButton.layer.borderWidth = 1
         progressview.progress = 0
     }
-    
-    func getUrl(id: String) {
-        Getdata.shared.getUrlForGif(strindId: id) { (finalUrl, error) in
-            if error != nil {
-                let alert = UIAlertController(title: "Error", message: error?.localizedDescription, preferredStyle: .alert)
-                alert.addAction(UIAlertAction(title: "Ok", style: .default, handler: nil))
-                self.present(alert, animated: true, completion: nil)
-                return
-            }
-            self.videoUrl = finalUrl!
-            print(self.videoUrl)
-            self.downloading()
-        }
-    }
+
     func downloading() {
         guard let url = URL(string: videoUrl) else { return }
         session.downloadTask(with: url).resume()
@@ -68,9 +59,13 @@ extension PostViewController: URLSessionDownloadDelegate {
         let destinationURL = documentsDirectoryURL.appendingPathComponent("gif.mp4")
         do {
             try FileManager.default.removeItem(at: destinationURL)
-            try FileManager.default.moveItem(at: location, to: destinationURL)
         } catch let error as NSError {
             print(error.localizedDescription)
+        }
+        do {
+            try FileManager.default.moveItem(at: location, to: destinationURL)
+        } catch {
+            debugPrint(error)
         }
         let player = AVPlayer(url: destinationURL)
         let playerViewController = AVPlayerViewController()
@@ -81,7 +76,7 @@ extension PostViewController: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         DispatchQueue.main.async {
-            self.progressview.setProgress(Float(totalBytesExpectedToWrite / totalBytesWritten), animated: true)
+            self.progressview.progress += Float(totalBytesExpectedToWrite / totalBytesWritten)
         }
     }
 }

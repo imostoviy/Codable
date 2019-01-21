@@ -22,10 +22,10 @@ struct DataFromID: Decodable {
     }
 
     struct Images: Decodable {
-        let fixed_width: Fixed
+        let original: Original
     }
 
-    struct Fixed: Decodable {
+    struct Original: Decodable {
         let mp4: String
     }
 //    let data: Data

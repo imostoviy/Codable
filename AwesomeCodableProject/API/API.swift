@@ -65,7 +65,7 @@ class Getdata {
     }
     
     //MARK: post request
-    func postRequest(complection: @escaping ((DataFromPost) -> ())) {
+    func postRequest(complection: @escaping((String?)->())) {
         task?.cancel()
         let gifSize = String(size.randomElement() ?? 300)
         let randomGifUrl: String = getRandomGif + "\(gifSize)/\(gifSize)"
@@ -74,14 +74,17 @@ class Getdata {
                                   .init(name: "source_image_url", value: randomGifUrl)]
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = "POST"
+        //var videoURL: String = ""
         task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             do {
                 let dataFromJSON = try JSONDecoder().decode(DataFromPost.self, from: data)
-                defer { DispatchQueue.main.async {
-                    complection(dataFromJSON)
-                    self.task = nil
-                    }}
+                DispatchQueue.main.async {
+                    self.getUrlForGif(strindId: dataFromJSON.data.id, complection: { (videoUrl, error) in
+                        complection(videoUrl)
+                    })
+                }
+                
             } catch {}
         })
         task?.resume()
@@ -102,10 +105,12 @@ class Getdata {
             guard let data = data else { fatalError("Something went wrong") }
             do {
                 let url = try JSONDecoder().decode(DataFromID.self, from: data)
-                defer {DispatchQueue.main.async {
-                    complection(url.data.images.fixed_width.mp4, nil)
-                    }}
-            } catch {}
+                DispatchQueue.main.async {
+                    complection(url.data.images.original.mp4, nil)
+                }
+            } catch {
+                debugPrint(error)
+            }
         })
         task?.resume()
     }
