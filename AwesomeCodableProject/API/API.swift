@@ -27,7 +27,7 @@ class Getdata {
     //MARK: Geting data and parsing JSON
     
     //getting data for currensy
-    func getData(completion: @escaping (([Ccy]) -> ())) {
+    func getData(completion: @escaping (([Ccy]) -> Void)) {
         task?.cancel()
         guard let url = URL(string: "https://api.privatbank.ua/p24api/pubinfo?exchange&json&coursid=11") else { return }
         task = session.dataTask(with: url) {(data, _, _) in
@@ -65,16 +65,16 @@ class Getdata {
     }
     
     //MARK: post request
-    func postRequest(complection: @escaping((String?)->())) {
+    func postRequest(complection: @escaping((String?) -> Void)) {
         task?.cancel()
-        let gifSize = String(size.randomElement() ?? 300)
-        let randomGifUrl: String = getRandomGif + "\(gifSize)/\(gifSize)"
+        let gifSize = String(size.randomElement()!)
+        let randomGifUrl = getRandomGif + "\(gifSize)/\(gifSize)"
         guard var urlComponents = URLComponents(string: urlToBePosted) else { fatalError("Incorrect url") }
         urlComponents.queryItems = [.init(name: "api_key", value: "lc3aGasGwDbt4ZWhRNQGWsZIbS4dzuBu"),
                                   .init(name: "source_image_url", value: randomGifUrl)]
         var request = URLRequest(url: urlComponents.url!)
         request.httpMethod = "POST"
-        //var videoURL: String = ""
+
         task = session.dataTask(with: request, completionHandler: { (data, response, error) in
             guard let data = data else { return }
             do {
@@ -91,12 +91,12 @@ class Getdata {
     }
     
     //MARK: Grebing data from id
-    func getUrlForGif(strindId: String, complection: @escaping((String?, Error?) -> ())) {
+    func getUrlForGif(strindId: String, complection: @escaping((String?, Error?) -> Void)) {
         task?.cancel()
         let urlForVideo = sourceUrlForVideo + strindId + "?"
         guard var urlComponents = URLComponents(string: urlForVideo) else { fatalError("Incorrect url") }
         urlComponents.queryItems = [.init(name: "api_key", value: "lc3aGasGwDbt4ZWhRNQGWsZIbS4dzuBu")]
-        var temp: String = urlComponents.url!.absoluteString
+        //var temp: String = urlComponents.url!.absoluteString
         task = session.dataTask(with: urlComponents.url!, completionHandler: { (data, responce, error) in
             if error != nil {
                 complection(nil, error)

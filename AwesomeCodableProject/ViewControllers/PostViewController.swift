@@ -27,11 +27,9 @@ class PostViewController: UIViewController {
     @IBAction func postCatButtonPressed(_ sender: UIButton) {
         progressview.progress = 0
         Getdata.shared.postRequest { (finalURL) in
-            DispatchQueue.main.async {
-                if finalURL != nil {
-                    self.videoUrl = finalURL!
-                    self.downloading()
-                }
+            if finalURL != nil {
+                self.videoUrl = finalURL!
+                self.downloading()
             }
         }
     }
@@ -54,19 +52,24 @@ class PostViewController: UIViewController {
 //MARK: Extention URLSEssionDownloadDelegete
 
 extension PostViewController: URLSessionDownloadDelegate {
+    
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didFinishDownloadingTo location: URL) {
         let documentsDirectoryURL = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
         let destinationURL = documentsDirectoryURL.appendingPathComponent("gif.mp4")
+        
         do {
             try FileManager.default.removeItem(at: destinationURL)
-        } catch let error as NSError {
-            print(error.localizedDescription)
-        }
-        do {
             try FileManager.default.moveItem(at: location, to: destinationURL)
+        } catch CocoaError.fileNoSuchFile {
+            do {
+                try FileManager.default.moveItem(at: location, to: destinationURL)
+            } catch {
+                debugPrint("aborting because of \(error)")
+            }
         } catch {
-            debugPrint(error)
+            debugPrint("Aborting saving operation becouse of such reason \(error)")
         }
+        
         let player = AVPlayer(url: destinationURL)
         let playerViewController = AVPlayerViewController()
         playerViewController.player = player
@@ -76,7 +79,7 @@ extension PostViewController: URLSessionDownloadDelegate {
     
     func urlSession(_ session: URLSession, downloadTask: URLSessionDownloadTask, didWriteData bytesWritten: Int64, totalBytesWritten: Int64, totalBytesExpectedToWrite: Int64) {
         DispatchQueue.main.async {
-            self.progressview.progress += Float(totalBytesExpectedToWrite / totalBytesWritten)
+            self.progressview.progress = (Float(totalBytesWritten) / Float(totalBytesExpectedToWrite))
         }
     }
 }
